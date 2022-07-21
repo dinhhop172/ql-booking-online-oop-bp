@@ -92,5 +92,3 @@
         </div>
     </div>
 </div>
-<?php if(isset($_SESSION['error'])){ unset($_SESSION['error']) ;} ?>
-<?php if(isset($_SESSION['data'])){ unset($_SESSION['data']) ;} ?>

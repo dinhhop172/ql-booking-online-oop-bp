@@ -75,5 +75,3 @@
         </div>
     </div>
 </div>
-<?php Session::unsetSession('error'); ?>
-<?php Session::unsetSession('data'); ?>

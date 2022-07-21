@@ -7,7 +7,7 @@
 
     $controller = !empty($_GET['c']) ? $_GET['c'] : $_GET['c'] = 'home';
     $action = !empty($_GET['a']) ? $_GET['a'] : $_GET['a'] = 'index';
-    $arrayController = ['home', 'dashboard', 'admin', 'login', 'register', 'verify', 'booking', 'user'];
+    $arrayController = ['home', 'dashboard', 'admin', 'login', 'register', 'verify', 'booking', 'user', 'room'];
 
     if(!empty($controller) && !empty($action)) {
         if(in_array($controller, $arrayController)){

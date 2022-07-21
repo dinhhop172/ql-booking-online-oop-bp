@@ -25,7 +25,7 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="?c=user">Users/Staff</a></li>
-                        <li><a href="../rooms/index.php">Rooms</a></li>
+                        <li><a href="?c=room">Rooms</a></li>
                         <li><a href="../booking/index.php">Booking</a></li>   
                     </ul>
                 </li>

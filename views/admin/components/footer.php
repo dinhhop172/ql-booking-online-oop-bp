@@ -13,6 +13,7 @@
 </div>
 <?= Session::unsetSession('success'); ?>
 <?= Session::unsetSession('error'); ?>
+<?= Session::unsetSession('data'); ?>
 <!-- JAVASCRIPT -->
 <script src="../../../assets/libs/jquery/jquery.min.js"></script>
             <script src="../../../assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
