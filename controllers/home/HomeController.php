@@ -2,12 +2,20 @@
 class HomeController extends Controller
 {
 
-    public function index()
+    private $room;
+
+    public function __construct()
     {
-        return $this->view('home/index');
+        $this->room = $this->model('RoomModel');
     }
 
-    public function show()
+    public function index()
+    {
+        $data['rooms'] = $this->room->show_all_rooms();
+        return $this->view('home/index', $data);
+    }
+
+    public function showAllRooms()
     {
         return $this->view('home/index');
     }

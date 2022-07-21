@@ -25,6 +25,22 @@ class LoginModel extends Database{
         $pre->bindParam(':verification_code', $data['verification_code'], PDO::PARAM_STR);
         return $pre->execute();
     }
+
+    public function check_verify_null($email){
+        $sql = "SELECT accounts.email_verified_at FROM accounts WHERE email = '${email}'";
+        $pre = $this->conn->prepare($sql);
+        $pre->execute();
+        $result = $pre->fetch(PDO::FETCH_ASSOC);
+        return $result;
+    }
+
+    public function delete_verified_at($email){
+        $sql = "UPDATE accounts SET email_verified_at = NULL WHERE email = '${email}'";
+        $pre = $this->conn->prepare($sql);
+        $pre->bindParam(':email', $email, PDO::PARAM_STR);
+        return $pre->execute();
+    }
+
 }
 
 ?>

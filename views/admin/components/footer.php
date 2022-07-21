@@ -11,6 +11,8 @@
     <!-- end main content-->
 
 </div>
+<?= Session::unsetSession('success'); ?>
+<?= Session::unsetSession('error'); ?>
 <!-- JAVASCRIPT -->
 <script src="../../../assets/libs/jquery/jquery.min.js"></script>
             <script src="../../../assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -28,13 +30,13 @@
             <!-- App js -->
             <script src="../../../assets/js/app.js"></script>
             <script>
-                var users = 1;
-                var doanhthu = 1;
-                var roomavaiable = 1;
-                var roombooked = 1;
+                var users = <?= $data['countUser'] ?? '1'; ?>;
+                var doanhthu = <?= $data['doanh_thu']['total_price'] ?? '2' ?>;
+                var roomavaiable = <?= $data['roomAvailable'][0]['sumroomavailable'] ?? '3' ?>;
+                var roombooked = <?= $data['roomBooked'][0]['sumroombooked'] ?? '4' ?>;
 
                 new Morris.Donut({
-                element: 'morris-donut',
+                element: 'morris-donut-example',
                 
                 data: [
                     { label:"Users",value:users },

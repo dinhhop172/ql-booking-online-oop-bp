@@ -17,3 +17,5 @@
 </body>
 
 </html>
+<?php Session::unsetSession('error'); ?>
+<?php Session::unsetSession('success'); ?>

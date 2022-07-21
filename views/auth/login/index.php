@@ -15,15 +15,15 @@
                             <form class="form-horizontal mt-4" action="?c=login&a=subLogin" method="POST">
                                 <div class="form-group">
                                     <label for="username">Email</label>
-                                    <input type="text" name="email" class="form-control" id="email" value="<?= isset($_SESSION['email']) ? $_SESSION['email'] : '' ?>" placeholder="Enter email">
+                                    <input type="text" name="email" class="form-control" id="email" value="" placeholder="Enter email">
                                 </div>
                                 <div class="form-group">
                                     <label for="userpassword">Password</label>
                                     <input type="password" name="password" class="form-control" id="userpassword" placeholder="Enter password">
                                 </div>
-                                <?php if(isset($_SESSION['error'])) {?>
+                                <?php if(Session::getSession('error')) {?>
                                 <div class="alert alert-danger mb-0" role="alert">
-                                    <?= $_SESSION['error'] ?>
+                                    <?= Session::getSession('error') ?>
                                 </div>
                                 <?php } ?>
                                 <div class="form-group row mt-4">

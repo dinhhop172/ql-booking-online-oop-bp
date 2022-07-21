@@ -3,12 +3,10 @@
     use PHPMailer\PHPMailer\PHPMailer;
     use PHPMailer\PHPMailer\SMTP;
     use PHPMailer\PHPMailer\Exception;
-
-    require '../../vendor/autoload.php';
     
-    class SendMail {
+    trait Sendmail {
 
-        public function sendtoemail($email, $name, $body)
+        public function sendToMail($email, $name, $body)
         {
             $mail = new PHPMailer(true);
                        

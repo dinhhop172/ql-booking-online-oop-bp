@@ -1,3 +1,4 @@
+<?= Session::getSession('success') ?>
 <!DOCTYPE html>
 <html lang="en">
 

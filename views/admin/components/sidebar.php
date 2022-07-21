@@ -12,7 +12,7 @@
                 <li class="menu-title">Hello Staff <h5></h5></li>
                 <?php } ?>
                 <li>
-                    <a href="../dashboard/index.php" class=" waves-effect">
+                    <a href="?c=dashboard" class=" waves-effect">
                         <i class="mdi mdi-calendar-check"></i>
                         <span>Dashboard</span>
                     </a>
@@ -24,7 +24,7 @@
                         <span>Quan ly</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="../users/index.php">Users/Staff</a></li>
+                        <li><a href="?c=user">Users/Staff</a></li>
                         <li><a href="../rooms/index.php">Rooms</a></li>
                         <li><a href="../booking/index.php">Booking</a></li>   
                     </ul>

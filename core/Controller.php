@@ -21,6 +21,13 @@
             }
         }
 
+        public function viewNomal($file, $data = []){
+            $path = 'views/'.$file.'.php';
+            if(file_exists($path)){
+                require_once "$path";
+            }
+        }
+
         public function check_input($data)
         {
             $data = trim($data);
@@ -40,16 +47,16 @@
 
         public function model($model)
         {
-            $path = 'models/auth/'.$model.'.php';
+            $path = 'models/'.$model.'.php';
             if(file_exists($path)){
                 require_once $path;
                 return new $model;
             }
         }
 
-        public function controller($controller)
+        public function contr($controller)
         {
-            $path = 'controllers/'.$controller.'.php';
+            $path = 'controllers/auth/'.$controller.'.php';
             if(file_exists($path)){
                 require_once "$path";
                 return new $controller;

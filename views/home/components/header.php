@@ -1,3 +1,6 @@
+<?= Session::getSession('verify_email'); ?>
+<?= Session::getSession('success'); ?>
+<?= Session::getSession('error'); ?>
 <!doctype html>
 <html lang="en">
     <head>
@@ -40,11 +43,15 @@
                     <a class="nav-link disabled">Disabled</a>
                 </li>
             </ul>
-                <a href="views/user/order/index.php" class="text-light">Order</a>&emsp;
-                <a class="text-info" href="views/auth/logout.php">Logout</a>
-                
-            <a class="btn btn-info my-2 my-sm-0" href="views/auth/register.php">Dang ky</a>&emsp;
-            <a class="btn btn-success my-2 my-sm-0" href="?c=login">Dang nhap</a>
+            <?php if(isset($_SESSION['user'])){?>
+                    <a class="text-light">Hello <?= $_SESSION['user']['username'] ?></a>&emsp;
+                    <a href="?c=booking&a=showViewUserBooked" class="text-light">Order</a>&emsp;
+                    <a class="text-info" href="?c=login&a=logout">Logout</a>
+                   
+                    <?php }else{ ?>
+                <a class="btn btn-info my-2 my-sm-0" href="?c=register">Dang ky</a>&emsp;
+                <a class="btn btn-success my-2 my-sm-0" href="?c=login">Dang nhap</a>
+            <?php } ?>
         </div>
     </nav>
         
