@@ -55,7 +55,7 @@
                             </div>
                             <div class="text-white">
                                 <h6 class="text-uppercase mb-3 font-size-16">Doanh thu</h6>
-                                <h2 class="mb-4">$<?= $data['doanh_thu']['total_price'] ?></h2>
+                                <h2 class="mb-4">$<?= ($data['doanh_thu']['total_price']) ?? 0 ?></h2>
                                 <span class="badge badge-danger"> -29% </span> <span class="ml-2">From previous period</span>
                             </div>
                         </div>
@@ -69,7 +69,7 @@
                             </div>
                             <div class="text-white">
                                 <h6 class="text-uppercase mb-3 font-size-16">Room available</h6>
-                                <h2 class="mb-4"><?= $data['roomAvailable'][0]['sumroomavailable'] ?></h2>
+                                <h2 class="mb-4"><?= ($data['roomAvailable'][0]['sumroomavailable']) ?? 0 ?></h2>
                                 <span class="badge badge-warning"> 0% </span> <span class="ml-2">From previous period</span>
                             </div>
                         </div>

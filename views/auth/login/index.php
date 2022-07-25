@@ -15,7 +15,7 @@
                             <form class="form-horizontal mt-4" action="?c=login&a=subLogin" method="POST">
                                 <div class="form-group">
                                     <label for="username">Email</label>
-                                    <input type="text" name="email" class="form-control" id="email" value="" placeholder="Enter email">
+                                    <input type="text" name="email" class="form-control" value="<?= isset($_SESSION['email']) ? $_SESSION['email'] : '' ?>" id="email" value="" placeholder="Enter email">
                                 </div>
                                 <div class="form-group">
                                     <label for="userpassword">Password</label>

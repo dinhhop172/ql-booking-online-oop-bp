@@ -5,6 +5,7 @@ class RoomController extends Controller {
     private $room;
 
     public function __construct() {
+        VerifyController::verify_admin();
         $this->room = $this->model('RoomModel');
     }
 

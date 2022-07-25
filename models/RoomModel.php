@@ -8,7 +8,7 @@ class RoomModel extends Database {
     }
 
     public function show_all_rooms(){
-        $sql = "SELECT * FROM rooms ORDER BY id DESC";
+        $sql = "SELECT * FROM rooms";
         $pre = $this->conn->prepare($sql);
         $pre->execute();
         $result = $pre->fetchAll(PDO::FETCH_ASSOC);

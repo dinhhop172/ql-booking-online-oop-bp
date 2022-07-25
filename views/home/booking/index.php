@@ -202,9 +202,9 @@
 if(isset($_SESSION['user'])){
         if(isset($_GET['room_id']) && isset($_GET['user_id'])){
             $user_id = $_GET['user_id'];
-            if((BookingController::getUserById($user_id)['id']) == $_SESSION['user']['id']){
+            if((BookController::getUserById($user_id)['id']) == $_SESSION['user']['id']){
                 $id = $_GET['room_id'];
-                $room = BookingController::getRoomById($id);
+                $room = BookController::getRoomById($id);
                 if($room && $room['status'] == 1){
 ?>
 
@@ -216,7 +216,7 @@ if(isset($_SESSION['user'])){
                     <div class="form-header">
                         <h1>Make your reservation</h1>
                     </div>
-                    <form action="?c=booking&a=subBooking" method="POST">
+                    <form action="?c=book&a=subBooking" method="POST">
                         <input type="hidden" name="room_id" value="<?= $room['id'] ?>">
                         <input type="hidden" name="account_id" value="<?= $_SESSION['user']['id'] ?>">
                         <div class="form-group">

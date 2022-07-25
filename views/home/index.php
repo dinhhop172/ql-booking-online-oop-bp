@@ -12,7 +12,7 @@
                         <p class="card-text <?= ($value['status'] == 1 ? 'text-success' : 'text-danger') ?>">Status: <?= ($value['status'] == 1 ? 'Empty room' : 'Room booked') ?></p>
                         <?php if($value['status'] == 1){ ?>
                             <?php if(isset($_SESSION['user']) && !empty($_SESSION['user']['email_verified_at'])){ ?>
-                            <a href="?c=booking&room_id=<?= $value['id'] ?>&user_id=<?= $_SESSION['user']['id'] ?>" class="btn btn-primary">Book room</a>
+                            <a href="?c=book&room_id=<?= $value['id'] ?>&user_id=<?= $_SESSION['user']['id'] ?>" class="btn btn-primary">Book room</a>
                             <?php }else{ ?>
                                 <a onclick="alert('Vui lòng đăng nhập hoặc xác thực tài khoản')" class='btn btn-primary'>Book room</a>
                                 <?php } ?>

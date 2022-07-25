@@ -36,14 +36,14 @@
                     ?>
                     <tr>
                         <th scope="row"><?= $i++ ?></th>
-                        <td><?= BookingController::showRoomAccountBooked($value['room_id'])['name'] ?></td>
+                        <td><?= BookController::showRoomAccountBooked($value['room_id'])['name'] ?></td>
                         <td><?= $value['check_in'] ?></td>
                         <td><?= $value['check_out'] ?></td>
                         <td><?= $value['total_day'] ?></td>
                         <td><?= $value['total_price'] ?></td>
                         <td>
-                            <a href="?c=booking&a=showEditRoomBooked&id=<?= $value['id'] ?>" class="btn btn-info waves-effect waves-light">Edit</a>
-                            <a href="?c=booking&a=cancelBooking&id_booking=<?= $value['id'] ?>&id_room=<?= $value['room_id'] ?>" class="btn btn-danger waves-effect waves-light">Cancel</a>
+                            <a href="?c=book&a=showEditRoomBooked&id=<?= $value['id'] ?>" class="btn btn-info waves-effect waves-light">Edit</a>
+                            <a href="?c=book&a=cancelBooking&id_booking=<?= $value['id'] ?>&id_room=<?= $value['room_id'] ?>" class="btn btn-danger waves-effect waves-light">Cancel</a>
                         </td>
                     </tr>
                     <?php }} ?>

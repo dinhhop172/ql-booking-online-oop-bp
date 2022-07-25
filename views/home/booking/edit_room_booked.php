@@ -20,7 +20,7 @@ if(!empty($_GET['id'])){
                 <div class="card">
                     <h5 class="card-title">Edit date booking</h5>
                     <div class="card-body">
-                        <form action="?c=booking&a=editRoomBooked" method="POST">
+                        <form action="?c=book&a=editRoomBooked" method="POST">
                             <input type="hidden" name="id" value="<?= $data['id'] ?>">
                             <div class="form-group">
                                 <label for="">Check in</label>

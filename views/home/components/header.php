@@ -45,7 +45,7 @@
             </ul>
             <?php if(isset($_SESSION['user'])){?>
                     <a class="text-light">Hello <?= $_SESSION['user']['username'] ?></a>&emsp;
-                    <a href="?c=booking&a=showViewUserBooked" class="text-light">Order</a>&emsp;
+                    <a href="?c=book&a=showViewUserBooked" class="text-light">Order</a>&emsp;
                     <a class="text-info" href="?c=login&a=logout">Logout</a>
                    
                     <?php }else{ ?>

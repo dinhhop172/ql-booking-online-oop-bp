@@ -39,6 +39,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        <?php if(isset($_SESSION['staff'])) {?>
                                         <?php  foreach($data['users'] as $value) { ?>
                                             <tr>
                                                 <td><?= $value['id'] ?></td>
@@ -50,6 +51,20 @@
                                                 <a onclick="return confirm('Bạn chắc chắn muốn xóa?')" href="?c=user&a=destroy&id=<?= $value['id'] ?>" class="btn btn-danger waves-effect waves-light"><i class="mdi mdi-delete"></i></a>
                                                 </td>
                                             </tr>
+                                        <?php } ?>
+                                        <?php }else{ ?>
+                                            <?php  foreach($data['users_staffs'] as $value) { ?>
+                                            <tr>
+                                                <td><?= $value['id'] ?></td>
+                                                <td><?= $value['username'] ?></td>
+                                                <td><?= $value['phone_number'] ?></td>
+                                                <td><?= $value['roles'] ?></td>
+                                                <td>
+                                                <a href="?c=user&a=edit&id=<?= $value['id'] ?>" class="btn btn-info waves-effect waves-light"><i class="mdi mdi-circle-edit-outline"></i></a>
+                                                <a onclick="return confirm('Bạn chắc chắn muốn xóa?')" href="?c=user&a=destroy&id=<?= $value['id'] ?>" class="btn btn-danger waves-effect waves-light"><i class="mdi mdi-delete"></i></a>
+                                                </td>
+                                            </tr>
+                                            <?php } ?>
                                         <?php } ?>
                                     </tbody>
                                 </table>

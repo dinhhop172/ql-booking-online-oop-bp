@@ -7,6 +7,7 @@
 
         public function __construct()
         {
+            VerifyController::verify_user();
             $this->modelUser = $this->model('UserModel');
         }
 

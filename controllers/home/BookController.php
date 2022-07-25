@@ -1,6 +1,6 @@
 <?php 
 
-class BookingController extends Controller
+class BookController extends Controller
 {
     // private $room;
     private static $user;
@@ -56,12 +56,12 @@ class BookingController extends Controller
                     if($this->booking->book_now($data)){
                         if($this->booking->change_status_room_when_booking($data['room_id'])){
                             echo '<script>alert("Đặt phòng thành công")</script>';
-                            echo '<script>window.location.href = "../../index.php"</script>';
+                            echo '<script>window.location.href = "?c=home"</script>';
                         }
                         
                     }else{
                         echo '<script>alert("Đặt phòng thất bại")</script>';
-                        echo '<script>window.location.href = "../../index.php"</script>';
+                        echo '<script>window.location.href = "?c=home"</script>';
                     }
                 }
             }else{
@@ -135,14 +135,47 @@ class BookingController extends Controller
                 $data['total_price'] = $data['total_day'] * $data['price'];
                 if($this->booking->update_order_booking_two($data['total_day'], $data['total_price'], $id)){
                     echo '<script>alert("Update thanh cong")</script>';
-                    echo '<script>window.location.href = "?c=booking&a=showViewUserBooked"</script>';
+                    echo '<script>window.location.href = "?c=book&a=showViewUserBooked"</script>';
                 }
     
             }else{
                 echo '<script>alert("Update that bai")</script>';
-                echo '<script>window.location.href = "?c=booking&a=showViewUserBooked"</script>';
+                echo '<script>window.location.href = "?c=book&a=showViewUserBooked"</script>';
             }
             
+        }
+    }
+
+    public function payment()
+    {
+        if(isset($_POST['id']) && isset($_POST['total_price']) && isset($_POST['room_id'])){
+            $booking_id = $_POST['id'];
+            $total_price = $_POST['total_price'];
+            $room_id = $_POST['room_id'];
+            $user_id = $_POST['user_id'];
+
+            
+            if(static::$user->get_staff_id_from_account($user_id)){
+                $staff_id = static::$user->get_staff_id_from_account($user_id)['staff_id'];
+                (int)$percent_of_staff = static::$user->get_percent_money_of_staff_by_id($staff_id)['percent'];
+                (int)$money_of_staff = static::$user->get_percent_money_of_staff_by_id($staff_id)['money'];
+                $hoahong = $total_price * $percent_of_staff / 100;
+                $total_money = $money_of_staff + $hoahong;
+                if(static::$user->update_meney_of_staff($staff_id, $total_money)){
+                    if($this->booking->change_status_booking_when_payment($booking_id)){
+                        echo '<script>alert("Payment thanh cong")</script>';
+                        echo '<script>window.location.href = "?c=booking"</script>';
+                    }
+                }
+
+            }else{
+                if($this->booking->change_status_booking_when_payment($booking_id)){
+                    echo '<script>alert("Payment thanh cong")</script>';
+                    echo '<script>window.location.href = "?c=booking"</script>';
+                }
+            }
+        }else{
+            return header('Location: ?c=home');
         }
     }
 

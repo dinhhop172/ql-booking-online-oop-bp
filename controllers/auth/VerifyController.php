@@ -53,7 +53,11 @@ class VerifyController extends Controller{
     }
 
     public static function verify_admin(){
-        if(!isset($_SESSION['admin'])) header('Location: ?c=home');
+        if(!isset($_SESSION['admin']) && !isset($_SESSION['staff'])) header('Location: ?c=home');
+    }
+
+    public static function verify_user(){
+        if(isset($_SESSION['user'])) header('Location: ?c=home');
     }
 
 }

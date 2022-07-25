@@ -7,10 +7,12 @@ class UserController extends Controller{
     public function __construct()
     {
         $this->user = $this->model('UserModel');
+        VerifyController::verify_admin();
     }
 
     public function index()
     {
+        $data['users_staffs'] = $this->user->show_all_users_staffs();
         $data['users'] = $this->user->show_all_users();
         return $this->view('admin/users/index', $data);
     }
@@ -30,6 +32,7 @@ class UserController extends Controller{
             $data['sex'] = isset($_POST['sex']) ? $this->check_input($_POST['sex']) : '';
             $data['address'] = isset($_POST['address']) ? $this->check_input($_POST['address']) : '';
             $data['roles'] = isset($_POST['roles']) ? $this->check_input($_POST['roles']) : '';
+            $data['staff_id'] = isset($_SESSION['staff']) ? $_SESSION['staff']['id'] : '';
 
             if (empty($data['email'])){
                 $error['email'] = 'Bạn chưa nhập email';
@@ -49,13 +52,24 @@ class UserController extends Controller{
                 $error['phone_number'] = 'Số điện thoại không hợp lệ';
             }
             if(!$error){
-                if($this->user->store($data)){
-                    echo '<script>alert("Add user thành công")</script>';
-                    echo '<script>window.location.href = "?c=user"</script>';
+                if(isset($_SESSION['admin'])){
+                    if($this->user->store($data)){
+                        echo '<script>alert("Add user thành công")</script>';
+                        echo '<script>window.location.href = "?c=user"</script>';
+                    }else{
+                        echo '<script>alert("Add user thất bại")</script>';
+                        echo '<script>window.location.href = "?c=user&a=create"</script>';
+                    }
                 }else{
-                    echo '<script>alert("Add user thất bại")</script>';
-                    echo '<script>window.location.href = "?c=user"</script>';
+                    if($this->user->staff_store($data)){
+                        echo '<script>alert("Add user thành công")</script>';
+                        echo '<script>window.location.href = "?c=user"</script>';
+                    }else{
+                        echo '<script>alert("Add user thất bại")</script>';
+                        echo '<script>window.location.href = "?c=user&a=create"</script>';
+                    }
                 }
+                
             }else{
                 $_SESSION['error'] = $error;
                 $_SESSION['data'] = $data;
@@ -112,11 +126,11 @@ class UserController extends Controller{
             }
             if(!$error){
                 if($this->user->update($data)){
-                    $_SESSION['success'] = '<script>alert("Cập nhật thành công")</script>';
-                    return header('location: ?c=user');
+                    echo '<script>alert("Cập nhật thành công")</script>';
+                    echo '<script>window.location.href = "?c=user"</script>';
                 }else{
-                    $_SESSION['error'] = '<script>alert("Cập nhật thất bại")</script>';
-                    return header('location: ?c=user');
+                    echo '<script>alert("Cập nhật thất bại")</script>';
+                    echo '<script>window.location.href = "?c=user"</script>';
                 }
             }else{
                 $_SESSION['error'] = $error;

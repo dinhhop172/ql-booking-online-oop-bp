@@ -60,8 +60,10 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="userpassword">Role</label><br>
+                                    <?php if(isset($_SESSION['admin'])) {?>
                                     <input type="radio" name="roles" value="admin" <?= isset($_SESSION['data']['roles']) == 'admin' ? 'checked' : '' ?>> Admin &emsp;
                                     <input type="radio" name="roles" value="staff" <?= isset($_SESSION['data']['roles']) == 'staff' ? 'checked' : '' ?>> Staff &emsp;
+                                    <?php } ?>
                                     <input type="radio" name="roles" value="user" <?= isset($_SESSION['data']['roles']) == 'user' ? 'checked' : '' ?>> User
                                 </div>
                                 <div class="form-group">
