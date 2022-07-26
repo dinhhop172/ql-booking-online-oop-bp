@@ -41,6 +41,18 @@ class StaffController extends Controller
             echo "<script>window.location.href= '?c=dashboard' </script>";
         }
     }
+
+    public function show_history_request()
+    {
+        if(isset($_GET['id']) && !empty($_GET['id'])){
+            $id = $_GET['id'];
+            $data['staff'] = $this->staff->get_history_request_of_staff_by_id($id);
+            return $this->view('admin/staffs/show_history_request', $data);
+        }else{
+            echo "<script>alert('Bạn chưa chọn nhân viên')</script>";
+            echo "<script>window.location.href= '?c=dashboard' </script>";
+        }
+    }
 }
 
 ?>

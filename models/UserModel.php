@@ -277,6 +277,16 @@ class UserModel extends Database {
         return $result;
     }
 
+    public function get_history_request_of_staff_by_id($id)
+    {
+        $sql = "SELECT * FROM request_payments WHERE staff_id = :id";
+        $pre = $this->conn->prepare($sql);
+        $pre->bindParam(':id', $id, PDO::PARAM_INT);
+        $pre->execute();
+        $result = $pre->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
+
 
 
 }

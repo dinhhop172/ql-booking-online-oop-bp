@@ -52,6 +52,12 @@
                         <span>Staff Request</span>
                     </a>
                 </li>
+                <li>
+                    <a href="?c=staff&a=show_history_request&id=<?= $_SESSION['staff']['id'] ?>" class=" waves-effect <?= (isset($_GET['a']) && $_GET['a'] == 'show_history_request') ? 'mm-active' : '' ?>">
+                        <i class="mdi mdi-calendar-check"></i>
+                        <span>History request</span>
+                    </a>
+                </li>
                 <?php } ?>
             </ul>
         </div>
